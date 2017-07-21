@@ -80,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
                             } else if (id.equals("for")) {
                                 id = "001";
                             } else if (id.equals("115")) {
-                                id = "bag";x
+                                id = "bag";
                             } else {
                                 Long n = Long.valueOf(id);
                                 id = String.format("%03d", n + 1);
