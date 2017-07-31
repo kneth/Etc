@@ -32,7 +32,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Realm.init(this);
         RealmConfiguration configuration = new RealmConfiguration.Builder()
                 .deleteRealmIfMigrationNeeded()
                 .build();
@@ -48,7 +47,8 @@ public class MainActivity extends AppCompatActivity {
                 if (!strips.isEmpty()) {
                     Strip strip = strips.first();
                     ImageView imageView = (ImageView) findViewById(R.id.imageView);
-                    Picasso.with(getApplicationContext()).load(baseUrl + "/etc" + strip.getId() + ".jpg").into(imageView);
+                    String imageUrl = String.format("%s/etc%s.jpg", baseUrl, strip.getId());
+                    Picasso.with(getApplicationContext()).load(imageUrl).into(imageView);
                     realm.beginTransaction();
                     strip.setSeen(true);
                     realm.commitTransaction();
